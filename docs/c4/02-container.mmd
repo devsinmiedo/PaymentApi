@@ -1,0 +1,20 @@
+C4Container
+title Load Balancer Lab - Containers (L2)
+
+Person(student, "Learner", "Observes instance distribution")
+
+Container_Boundary(lab, "Nginx Load Balancer Lab") {
+    Container(loadgen, "Load Generator", "bash + curl", "Sends concurrent HTTP requests and summarizes instance hits")
+    Container(nginx, "Nginx Load Balancer", "nginx:alpine", "Applies selected upstream strategy and proxies traffic")
+    Container(b1, "Backend-1", "Node.js/Express", "Returns INSTANCE_ID=backend-1")
+    Container(b2, "Backend-2", "Node.js/Express", "Returns INSTANCE_ID=backend-2")
+    Container(b3, "Backend-3", "Node.js/Express", "Slower instance (delay) for least_conn demos")
+    Container(b4, "Backend-4", "Node.js/Express", "Returns INSTANCE_ID=backend-4")
+}
+
+Rel(student, loadgen, "Starts script")
+Rel(loadgen, nginx, "HTTP GET / or /work")
+Rel(nginx, b1, "proxy_pass")
+Rel(nginx, b2, "proxy_pass")
+Rel(nginx, b3, "proxy_pass")
+Rel(nginx, b4, "proxy_pass")

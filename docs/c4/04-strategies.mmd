@@ -1,0 +1,18 @@
+C4Container
+title Strategy Overview - How traffic is chosen
+
+Container(nginx, "Nginx upstream", "strategy switch via STRATEGY env")
+
+Container_Boundary(strategies, "Supported Strategies") {
+    Component(rr, "round-robin", "default", "Even distribution across peers")
+    Component(lc, "least-conn", "least_conn", "Prefers peers with fewer active connections")
+    Component(ih, "ip-hash", "ip_hash", "Same client IP sticks to same peer")
+    Component(w, "weighted", "weight=N", "Peers receive traffic proportional to weight")
+    Component(h, "hash", "hash $request_uri consistent", "Same URI tends to hit same peer")
+}
+
+Rel(nginx, rr, "STRATEGY=round-robin")
+Rel(nginx, lc, "STRATEGY=least-conn")
+Rel(nginx, ih, "STRATEGY=ip-hash")
+Rel(nginx, w, "STRATEGY=weighted")
+Rel(nginx, h, "STRATEGY=hash")

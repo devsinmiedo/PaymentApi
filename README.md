@@ -27,7 +27,7 @@ This repository is my practice ground and portfolio note for that journey.
 | **Payment service** | ASP.NET Core 8 API: model → service → controller | This repo |
 | **Mock provider** | Demo success/decline cards, validation, status | `Services/PaymentService.cs` |
 | **Nginx LB** | 4 backends + switch strategies, measure distribution | [docs/NGINX-LEARNINGS.md](docs/NGINX-LEARNINGS.md) · sibling lab: `nginx-load-balancer-lab` |
-| **C4** | Drew Context / Container / Component for the lab | Lab `docs/c4/` |
+| **C4** | Drew Context / Container / Component for the nginx lab | [docs/c4/](docs/c4/) |
 
 ### Nginx results I personally verified
 

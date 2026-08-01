@@ -1,0 +1,9 @@
+C4Context
+title Load Balancer Lab - System Context (L1)
+
+Person(student, "Learner / Developer", "Sends traffic and observes routing")
+System(lab, "Nginx Load Balancer Lab", "Educational environment to compare LB strategies")
+System_Ext(browser, "HTTP Client / curl / script", "Generates concurrent requests")
+
+Rel(student, browser, "Runs experiments")
+Rel(browser, lab, "HTTP requests on :8080")

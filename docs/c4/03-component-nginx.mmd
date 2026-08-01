@@ -1,0 +1,18 @@
+C4Component
+title Nginx Load Balancer - Components (L3)
+
+Container_Boundary(nginx, "Nginx") {
+    Component(server, "HTTP Server Block", "listen :80", "Entry point for client traffic")
+    Component(location, "location /", "proxy module", "Forwards requests to upstream")
+    Component(upstream, "upstream backend_pool", "LB strategy", "round-robin | least_conn | ip_hash | weighted | hash")
+    Component(logs, "Access / Error Logs", "log_format lb", "Shows selected upstream address per request")
+    Component(health, "nginx-health", "static response", "Local proxy health endpoint")
+}
+
+Container_Ext(backends, "Backend Pool", "backend-1..4")
+
+Rel(server, location, "routes")
+Rel(server, health, "routes /nginx-health")
+Rel(location, upstream, "selects peer")
+Rel(upstream, backends, "TCP to :3000")
+Rel(location, logs, "writes request metadata")

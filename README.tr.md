@@ -28,7 +28,7 @@ Bu depo, o yolculuğun pratik defteri ve portföy notu.
 | **Payment service** | ASP.NET Core 8 API: model → service → controller | Bu repo |
 | **Mock provider** | Başarı / red demo kartları, validation, status | `Services/PaymentService.cs` |
 | **Nginx LB** | 4 backend + strateji değiştirerek dağılımı ölçtüm | [docs/NGINX-LEARNINGS.tr.md](docs/NGINX-LEARNINGS.tr.md) · kardeş lab: `nginx-load-balancer-lab` |
-| **C4** | Context / Container / Component ile lab mimarisini çizdim | Lab içi `docs/c4/` |
+| **C4** | Context / Container / Component ile nginx lab mimarisini çizdim | [docs/c4/](docs/c4/) |
 
 ### Nginx’de gördüğüm sonuçlar (kısa)
 
