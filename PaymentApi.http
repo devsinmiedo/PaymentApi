@@ -1,0 +1,92 @@
+@PaymentApi_HostAddress = http://localhost:5101
+
+### Health
+GET {{PaymentApi_HostAddress}}/health
+
+### Create payment (success demo card)
+POST {{PaymentApi_HostAddress}}/api/payments
+Content-Type: application/json
+
+{
+  "orderNumber": "ORD-1001",
+  "amount": 150.50,
+  "currency": "TRY",
+  "description": "Demo order",
+  "use3DSecure": true,
+  "callbackUrl": "https://example.com/payment/callback",
+  "card": {
+    "cardHolderName": "John Doe",
+    "cardNumber": "5528790000000008",
+    "expireMonth": "12",
+    "expireYear": "2030",
+    "cvv": "123"
+  },
+  "buyer": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john@example.com",
+    "phone": "+905551112233",
+    "identityNumber": "11111111111",
+    "ipAddress": "127.0.0.1"
+  },
+  "billingAddress": {
+    "contactName": "John Doe",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "address": "Example Mah. Demo Sok. No:1",
+    "zipCode": "34000"
+  },
+  "items": [
+    {
+      "id": "ITEM-1",
+      "name": "Demo Product",
+      "category": "Electronics",
+      "price": 150.50,
+      "quantity": 1
+    }
+  ]
+}
+
+### Create payment (decline demo card)
+POST {{PaymentApi_HostAddress}}/api/payments
+Content-Type: application/json
+
+{
+  "orderNumber": "ORD-1002",
+  "amount": 50,
+  "currency": "TRY",
+  "card": {
+    "cardHolderName": "Jane Doe",
+    "cardNumber": "5406670000000009",
+    "expireMonth": "12",
+    "expireYear": "2030",
+    "cvv": "123"
+  },
+  "buyer": {
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "email": "jane@example.com",
+    "phone": "+905551112244"
+  },
+  "billingAddress": {
+    "contactName": "Jane Doe",
+    "city": "Ankara",
+    "country": "Turkey",
+    "address": "Demo Cad. No:2"
+  },
+  "items": [
+    {
+      "id": "ITEM-1",
+      "name": "Demo Product",
+      "category": "General",
+      "price": 50,
+      "quantity": 1
+    }
+  ]
+}
+
+### Get payment
+GET {{PaymentApi_HostAddress}}/api/payments/{paymentId}
+
+### List payments
+GET {{PaymentApi_HostAddress}}/api/payments
