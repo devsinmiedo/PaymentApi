@@ -3,7 +3,7 @@
 > A hands-on **ASP.NET Core 8** payment API built to understand how a payment service is structured — models, validation, mock provider rules, and clean layering.  
 > **Not for production. No real money moves here.**
 
-[Türkçe README](README.tr.md) · [Learning log](docs/LEARNINGS.md) · [Architecture](docs/ARCHITECTURE.md)
+[Türkçe README](README.tr.md) · [Learning log](docs/LEARNINGS.md) · [Nginx learning](docs/NGINX-LEARNINGS.md) · [Architecture](docs/ARCHITECTURE.md)
 
 ---
 
@@ -16,7 +16,27 @@ I built this while learning payment backend basics:
 3. How sandbox-style **success/decline cards** teach provider behavior  
 4. How interfaces make a future Iyzico/Stripe swap imaginable  
 
+In the same learning period I also ran an **nginx load balancer lab** (round-robin, weighted, least-conn, ip-hash) to understand what sits *in front of* multiple service instances.
+
 This repository is my practice ground and portfolio note for that journey.
+
+## Learning journey (overview)
+
+| Topic | What I did | Where |
+|-------|------------|--------|
+| **Payment service** | ASP.NET Core 8 API: model → service → controller | This repo |
+| **Mock provider** | Demo success/decline cards, validation, status | `Services/PaymentService.cs` |
+| **Nginx LB** | 4 backends + switch strategies, measure distribution | [docs/NGINX-LEARNINGS.md](docs/NGINX-LEARNINGS.md) · sibling lab: `nginx-load-balancer-lab` |
+| **C4** | Drew Context / Container / Component for the lab | Lab `docs/c4/` |
+
+### Nginx results I personally verified
+
+- **round-robin** → even split (`25/25/25/25`)  
+- **weighted** → heavy instance dominates  
+- **least-conn** → slow instance gets fewer requests  
+- **ip-hash** → one client IP sticks to one backend  
+
+Details: [Nginx learning notes](docs/NGINX-LEARNINGS.md)
 
 ## What it does
 

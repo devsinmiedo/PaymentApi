@@ -4,7 +4,7 @@
 > Modeller, doğrulama, mock provider kuralları ve katmanlı yapı.  
 > **Production değildir. Gerçek para işlemez.**
 
-[English README](README.md) · [Öğrenme notları](docs/LEARNINGS.tr.md) · [Mimari](docs/ARCHITECTURE.md)
+[English README](README.md) · [Öğrenme notları](docs/LEARNINGS.tr.md) · [Nginx öğrenimi](docs/NGINX-LEARNINGS.tr.md) · [Mimari](docs/ARCHITECTURE.md)
 
 ---
 
@@ -17,7 +17,27 @@ Temel payment backend kavramlarını öğrenirken bunu yazdım:
 3. Sandbox’taki **başarılı / red kartları** provider davranışını nasıl öğretir?  
 4. Interface’ler ileride Iyzico/Stripe değişimini nasıl kolaylaştırır?  
 
+Aynı öğrenme döneminde **nginx load balancer** stratejilerini de ayrı bir lab’de deneyimledim (round-robin, weighted, least-conn, ip-hash). Ödeme servisinin *içini* ve trafiğin *önünü* birlikte kavramak için.
+
 Bu depo, o yolculuğun pratik defteri ve portföy notu.
+
+## Öğrenme yolculuğu (özet)
+
+| Konu | Ne yaptım | Kanıt / not |
+|------|-----------|-------------|
+| **Payment service** | ASP.NET Core 8 API: model → service → controller | Bu repo |
+| **Mock provider** | Başarı / red demo kartları, validation, status | `Services/PaymentService.cs` |
+| **Nginx LB** | 4 backend + strateji değiştirerek dağılımı ölçtüm | [docs/NGINX-LEARNINGS.tr.md](docs/NGINX-LEARNINGS.tr.md) · kardeş lab: `nginx-load-balancer-lab` |
+| **C4** | Context / Container / Component ile lab mimarisini çizdim | Lab içi `docs/c4/` |
+
+### Nginx’de gördüğüm sonuçlar (kısa)
+
+- **round-robin** → eşit dağılım (`25/25/25/25`)  
+- **weighted** → ağırlıklı instance baskın  
+- **least-conn** → yavaş instance’a daha az istek  
+- **ip-hash** → aynı IP hep aynı backend (sticky)  
+
+Detay: [Nginx öğrenim notları](docs/NGINX-LEARNINGS.tr.md)
 
 ## Ne yapıyor?
 

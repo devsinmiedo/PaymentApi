@@ -81,3 +81,9 @@ Temel oturunca sıradaki konular bunlar.
 5. Sepet toplamını boz → validation mesajını gör  
 
 Anlamak, SDK dokümanı okumaktan çok **bir girdiyi değiştirip sonucu izlemekten** geliyor.
+
+## 8. İlgili: Nginx load balancing lab
+
+Aynı dönemde nginx ile trafik dağıtımını da denedim (round-robin, weighted, least-conn, ip-hash) — dört aynı backend üzerinde.
+
+Detay: [NGINX-LEARNINGS.tr.md](NGINX-LEARNINGS.tr.md)

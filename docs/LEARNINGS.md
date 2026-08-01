@@ -81,3 +81,9 @@ Those are next steps after the basics click.
 5. Break basket total → see validation message
 
 Understanding comes from **changing one input and watching the result**, not from reading SDK docs alone.
+
+## 8. Related: Nginx load balancing lab
+
+I also practiced traffic distribution with nginx (round-robin, weighted, least-conn, ip-hash) against four identical backends.
+
+Full write-up: [NGINX-LEARNINGS.md](NGINX-LEARNINGS.md)
