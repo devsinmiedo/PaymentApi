@@ -116,8 +116,7 @@ More experiments: see [`PaymentApi.http`](PaymentApi.http) and [`docs/LEARNINGS.
 
 - **In-memory store** — focus on flow, not database setup  
 - **Mock provider** — learn outcomes without PSP credentials  
-- **English model names** — common industry vocabulary  
-- **No microservices** — one service, clear boundaries  
+
 
 ## Roadmap (after the basics)
 

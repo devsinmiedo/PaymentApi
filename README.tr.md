@@ -117,8 +117,6 @@ Daha fazla deneme: [`PaymentApi.http`](PaymentApi.http) ve [`docs/LEARNINGS.tr.m
 
 - **Bellek içi store** — akışa odaklan, DB kurma  
 - **Mock provider** — PSP hesabı olmadan sonuçları gör  
-- **İngilizce model isimleri** — sektör diliyle hizalan  
-- **Mikroservis yok** — tek servis, net sınırlar  
 
 ## Sonraki adımlar
 
